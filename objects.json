@@ -1,0 +1,30 @@
+{
+  "obj1": {
+    "location1": {
+      "start": 1904,
+      "type": "create",
+    },
+    "location2": {
+      "start": 1908,
+      "type": "purchase",
+    },
+    "location3": {
+      "start": 1920,
+      "type": "gift",
+    }
+  },
+  "obj2": {
+    "location1": {
+      "start": 1904,
+      "type": "create",
+    },
+    "location2": {
+      "start": 1908,
+      "type": "purchase",
+    },
+    "location3": {
+      "start": 1920,
+      "type": "purchase",
+    }
+  }
+}
