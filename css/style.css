@@ -36,3 +36,9 @@ body,
 #map {
   /* height: 600px; */
 }
+
+
+
+#leaflet-slider {
+  margin-bottom: 50px;
+}
