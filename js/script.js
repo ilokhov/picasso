@@ -1,5 +1,10 @@
 window.onload = function() {
   
+  // helper functions
+  function onlyUnique(value, index, self) { 
+    return self.indexOf(value) === index;
+  }
+
   // single JSON call
 
   // $.getJSON("objects-array.json", function(data) {
@@ -39,12 +44,12 @@ window.onload = function() {
 
   function main() {
     // define main layer
-    var points = new L.LayerGroup();
+    var shapes = new L.LayerGroup();
 
-    // define point defaults
-    var pointWeight = 1,
-        pointFillOpacity = 0.5,
-        pointRadius = 100000,
+    // define circle defaults
+    var circleWeight = 1,
+        circleFillOpacity = 0.5,
+        baseCircleRadius = 100000,
         lineWeight = 1;
 
     var mainColor = 'red';
@@ -62,7 +67,7 @@ window.onload = function() {
     var map = L.map('map', {
       center: [30.505, -20.09],
       zoom: 3,
-      layers: [grayscale, points],
+      layers: [grayscale, shapes],
     });
 
 
@@ -88,105 +93,116 @@ window.onload = function() {
 
 
 
-    // main slider function
+    // BEGIN slider step
     function sliderStep(year) {
       // clear all map data from previous step
-      points.clearLayers();
+      shapes.clearLayers();
 
       // set year text
       $year.html(year);
 
-      // loop through all objects
+
+
+
+      // collect all shapes to be drawn in array
+      var circles = [],
+          curves = [];
+
+
+
+
+      // START looping through all objects
       objects.forEach(function(el) {
         
-        // console.log(el);
-
+        // init previous location
         var locPrevious = null;
 
+        // START looping through locations of each object
         for (var i = 0; i < el.locations.length; i++) {
+          
           locName = el.locations[i].name;
           locStartYear = el.locations[i].start;
           locEndYear = el.locations[i].end;
 
           if (locStartYear > year) {
-            console.log(year + " - > does not exist yet");
+            // console.log(year + " - > does not exist yet");
             break;
           }
           else if (locStartYear === year) {
-            console.log(year + " - > transfer to: " + locName);
+            // console.log(year + " - > transfer to: " + locName);
+            circles.push(locName);
 
-            L.circle([locations[locName].lat, locations[locName].lng], {
-                color: mainColor,
-                fillColor: mainColor,
-                fillOpacity: pointFillOpacity,
-                radius: pointRadius,
-                weight: pointWeight,
-            }).addTo(points);
-
-
-
-            // check if previous location exists, add point and curve if this is the case
+            // check if previous location exists, add circle and curve if this is the case
             if (locPrevious) {
-              console.log("previous location was: " + locPrevious);
-
-              L.circle([locations[locPrevious].lat, locations[locPrevious].lng], {
-                  color: mainColor,
-                  fillColor: mainColor,
-                  fillOpacity: pointFillOpacity,
-                  radius: pointRadius,
-                  weight: pointWeight,
-              }).addTo(points);
-
-              var aLat = locations[locPrevious].lat;
-              var aLng = locations[locPrevious].lng;
-              var bLat = locations[locName].lat;
-              var bLng = locations[locName].lng;
-              var pathOne = L.curve([
-                            'M',[aLat, aLng],
-                            'Q',[aLat + 20, (aLng + bLng) / 2],
-                                [bLat, bLng]], {
-                                  dashArray: 10,
-                                  animate: {duration: 5000, iterations: Infinity},
-                                  color: mainColor,
-                                  weight: lineWeight,
-                                }).addTo(points);
-
-
-
+              // console.log("previous location was: " + locPrevious);
+              circles.push(locPrevious);
+              curves.push([
+                            locations[locPrevious].lat,
+                            locations[locPrevious].lng,
+                            locations[locName].lat,
+                            locations[locName].lng]);
             }
             break;
           }
           else if (locStartYear < year && locEndYear >= year) {
-            console.log(year + " - > stays in " + locName);
-            console.log(locations[locName].lat);
-            console.log(locations[locName].lng);
-
-            L.circle([locations[locName].lat, locations[locName].lng], {
-                color: mainColor,
-                fillColor: mainColor,
-                fillOpacity: pointFillOpacity,
-                radius: pointRadius,
-                weight: pointWeight,
-            }).addTo(points);
-
-
-
+            // console.log(year + " - > stays in " + locName);
+            // console.log(locations[locName].lat);
+            // console.log(locations[locName].lng);
+            circles.push(locName);
             break;
           }
 
           // save previous location (for transfer)
           locPrevious = locName;
 
+        // END looping through locations of each object
         }
 
 
-
+      // END looping through all objects
       });
 
 
 
+      // get unique locations of circles
+      var uniqueCircles = circles.filter(onlyUnique);
 
+      // create object with all locations and number of occurances 
+      var countCircles = {};
+      circles.forEach(function(x) {
+        countCircles[x] = (countCircles[x] || 0) + 1;
+      });
 
+      // loop through circles and draw them
+      for (var key in countCircles) {
+        if (countCircles.hasOwnProperty(key)) {
+          console.log(key + " -> " + countCircles[key]);
+
+          L.circle([locations[key].lat, locations[key].lng], {
+              color: mainColor,
+              fillColor: mainColor,
+              fillOpacity: circleFillOpacity,
+              radius: baseCircleRadius * (countCircles[key] / 1.5),
+              weight: circleWeight,
+          }).addTo(shapes);
+
+        }
+      }
+
+      // loop throuh curves and draw them
+      curves.forEach(function(curve) {
+        L.curve([
+                  'M',[curve[0], curve[1]],
+                  'Q',[curve[0] + 20, (curve[1] + curve[3]) / 2],
+                      [curve[2], curve[3]]], {
+                        dashArray: 10,
+                        animate: {duration: 5000, iterations: Infinity},
+                        color: mainColor,
+                        weight: lineWeight,
+                      }).addTo(shapes);
+      });
+
+    // END slider step
     }
 
 
@@ -195,20 +211,6 @@ window.onload = function() {
     sliderStep(currentYear);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 
     // playback
     var refreshIntervalId,
@@ -245,17 +247,8 @@ window.onload = function() {
 
 
 
-
-
-
-
-
     // END MAIN
   }
-
-
-
-
 
 
 };
