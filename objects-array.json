@@ -2,15 +2,32 @@
   {
     "id": "obj1",
     "locations": [
-      {"madrid": 1918},
-      {"ny": 1924}
+      {
+        "name": "madrid",
+        "start": 1918,
+        "end": 1923
+      },
+      {
+        "name": "ny",
+        "start": 1924,
+        "end": 2017
+      }
     ]
   },
   {
     "id": "obj2",
     "locations": [
-      {"madrid": 1920},
-      {"ny": 1928}
+      {
+        "name": "madrid",
+        "start": 1919,
+        "end": 1928
+      },
+      {
+        "name": "ny",
+        "start": 1929,
+        "end": 2017
+      }
     ]
   }
+
 ]

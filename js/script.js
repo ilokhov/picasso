@@ -1,5 +1,7 @@
 window.onload = function() {
   
+  // single JSON call
+
   // $.getJSON("objects-array.json", function(data) {
   //   console.log(data.length);
 
@@ -16,37 +18,28 @@ window.onload = function() {
 
 
 
+  var objects,
+      locations;
 
-
-  // var objectData,
-  //     locationData;
-
-  // $.when(
-  //     $.getJSON("objects-array.json", function(data) {
-  //         objectData = data;
-  //     }),
-  //     $.getJSON("locations.json", function(data) {
-  //         locationData = data;
-  //     })
-  // ).then(function() {
-  //   console.log(objectData.length);
-
-  //   objectData.forEach(function(el) {
-  //     console.log(el);
-  //   });
-
-  //   // run main function
-  //   main(objectData, locationData);
-  // });
+  $.when(
+      $.getJSON("objects-array.json", function(data) {
+          objects = data;
+      }),
+      $.getJSON("locations.json", function(data) {
+          locations = data;
+      })
+  ).then(function() {
+    // run main function
+    main();
+  });
 
 
 
 
 
   function main() {
+    // define main layer
     var points = new L.LayerGroup();
-
-
 
     // define point defaults
     var pointWeight = 1,
@@ -55,110 +48,6 @@ window.onload = function() {
         lineWeight = 1;
 
     var mainColor = 'red';
-
-
-
-
-
-
-
-
-
-
-    var elArray = [];
-    // elArray.push(L.circle([40.415916, -3.703578], {
-    //     color: mainColor,
-    //     fillColor: mainColor,
-    //     fillOpacity: pointFillOpacity,
-    //     radius: pointRadius,
-    //     weight: pointWeight,
-    //     time: 1922,
-    //     id: 1,
-    // }));
-
-
-
-
-    var pointOne = L.circle([40.415916, -3.703578], {
-        color: mainColor,
-        fillColor: mainColor,
-        fillOpacity: pointFillOpacity,
-        radius: pointRadius,
-        weight: pointWeight,
-        time: 1922,
-        id: 1,
-    });
-
-    var pointTwo = L.circle([40.715721, -74.026105], {
-        color: mainColor,
-        fillColor: mainColor,
-        fillOpacity: pointFillOpacity,
-        radius: pointRadius,
-        weight: pointWeight,
-        time: 1922,
-        id: 1,
-    });
-
-
-
-
-
-    var aLat = 40.415916;
-    var aLng = -3.703578;
-    var bLat = 40.715721;
-    var bLng = -74.026105;
-    var pathOne = L.curve([
-                  'M',[aLat, aLng],
-                  'Q',[aLat + 20, (aLng + bLng) / 2],
-                      [bLat, bLng]], {
-                        dashArray: 10,
-                        animate: {duration: 5000, iterations: Infinity},
-                        color: mainColor,
-                        weight: lineWeight,
-                        time: 1922,
-                        id: 1,
-                      });
-
-
-
-
-
-    var pointThree = L.circle([40.415916, -3.703578], {
-        color: 'green',
-        fillColor: 'green',
-        fillOpacity: pointFillOpacity,
-        radius: pointRadius,
-        weight: pointWeight,
-        time: 1920,
-        id: 2,
-    });
-
-    var pointFour = L.circle([40.715721, -74.026105], {
-        color: 'green',
-        fillColor: 'green',
-        fillOpacity: pointFillOpacity,
-        radius: pointRadius,
-        weight: pointWeight,
-        time: 1920,
-        id: 2,
-    });
-
-
-
-
-
-
-
-    
-    elArray.push(pointOne, pointTwo, pathOne, pointThree, pointFour);
-
-
-
-
-
-
-
-
 
 
 
@@ -177,16 +66,8 @@ window.onload = function() {
     });
 
 
-    
 
-
-    
-
-
-
-    
-
-
+    // set starting year
     $year = $('#year');
     var minYear = 1900,
         currentYear = minYear,
@@ -209,28 +90,119 @@ window.onload = function() {
 
     // main slider function
     function sliderStep(year) {
+      // clear all map data from previous step
+      points.clearLayers();
+
       // set year text
       $year.html(year);
 
-      // cycle through all elements
-      elArray.forEach(function(el){
-        // first clear the current element
-        points.removeLayer(el);
+      // loop through all objects
+      objects.forEach(function(el) {
+        
+        // console.log(el);
 
-        // add it only if it's in the current year
-        if (el.options.time === year) {
-          points.addLayer(el);
+        var locPrevious = null;
+
+        for (var i = 0; i < el.locations.length; i++) {
+          locName = el.locations[i].name;
+          locStartYear = el.locations[i].start;
+          locEndYear = el.locations[i].end;
+
+          if (locStartYear > year) {
+            console.log(year + " - > does not exist yet");
+            break;
+          }
+          else if (locStartYear === year) {
+            console.log(year + " - > transfer to: " + locName);
+
+            L.circle([locations[locName].lat, locations[locName].lng], {
+                color: mainColor,
+                fillColor: mainColor,
+                fillOpacity: pointFillOpacity,
+                radius: pointRadius,
+                weight: pointWeight,
+            }).addTo(points);
+
+
+
+            // check if previous location exists, add point and curve if this is the case
+            if (locPrevious) {
+              console.log("previous location was: " + locPrevious);
+
+              L.circle([locations[locPrevious].lat, locations[locPrevious].lng], {
+                  color: mainColor,
+                  fillColor: mainColor,
+                  fillOpacity: pointFillOpacity,
+                  radius: pointRadius,
+                  weight: pointWeight,
+              }).addTo(points);
+
+              var aLat = locations[locPrevious].lat;
+              var aLng = locations[locPrevious].lng;
+              var bLat = locations[locName].lat;
+              var bLng = locations[locName].lng;
+              var pathOne = L.curve([
+                            'M',[aLat, aLng],
+                            'Q',[aLat + 20, (aLng + bLng) / 2],
+                                [bLat, bLng]], {
+                                  dashArray: 10,
+                                  animate: {duration: 5000, iterations: Infinity},
+                                  color: mainColor,
+                                  weight: lineWeight,
+                                }).addTo(points);
+
+
+
+            }
+            break;
+          }
+          else if (locStartYear < year && locEndYear >= year) {
+            console.log(year + " - > stays in " + locName);
+            console.log(locations[locName].lat);
+            console.log(locations[locName].lng);
+
+            L.circle([locations[locName].lat, locations[locName].lng], {
+                color: mainColor,
+                fillColor: mainColor,
+                fillOpacity: pointFillOpacity,
+                radius: pointRadius,
+                weight: pointWeight,
+            }).addTo(points);
+
+
+
+            break;
+          }
+
+          // save previous location (for transfer)
+          locPrevious = locName;
+
         }
-        // else {
-        //   points.removeLayer(el);
-        // }
+
+
+
       });
+
+
+
+
+
     }
 
 
 
     // init slider
     sliderStep(currentYear);
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -281,9 +253,6 @@ window.onload = function() {
     // END MAIN
   }
 
-  
-
-  main();
 
 
 
