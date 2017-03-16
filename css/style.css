@@ -42,3 +42,48 @@ body,
 #leaflet-slider {
   margin-bottom: 50px;
 }
+
+
+#controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10000;
+  width: 410px;
+  height: 52px;
+  background: #222;
+}
+#play {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  width: 28px;
+  height: 28px;
+  background: url('../img/play.png') no-repeat 0 0/100%;
+  cursor: pointer;
+}
+#play.active {
+  background-image: url('../img/pause.png');
+}
+#slider {
+  position: absolute;
+  bottom: 20px;
+  left: 80px;
+  width: 200px;
+  height: 8px;
+  border-radius: 4px;
+}
+#slider .ui-slider-handle {
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  outline: none;
+}
+#year {
+  position: absolute;
+  bottom: 10px;
+  left: 310px;
+  font-size: 32px;
+  color: #fff;
+}
+

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "obj1",
+    "locations": [
+      {"madrid": 1918},
+      {"ny": 1924}
+    ]
+  },
+  {
+    "id": "obj2",
+    "locations": [
+      {"madrid": 1920},
+      {"ny": 1928}
+    ]
+  }
+]
