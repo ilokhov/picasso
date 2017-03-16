@@ -5,22 +5,6 @@ window.onload = function() {
     return self.indexOf(value) === index;
   }
 
-  // single JSON call
-
-  // $.getJSON("objects-array.json", function(data) {
-  //   console.log(data.length);
-
-  //   data.forEach(function(el) {
-  //     console.log(el);
-  //   });
-
-  //   // run main function
-  //   main(data);
-
-  // }).fail(function(data, textStatus, error) {
-  //   console.error("getJSON failed, status: " + textStatus + ", error: " + error);
-  // });
-
 
 
   var objects,
@@ -87,6 +71,10 @@ window.onload = function() {
       max: maxYear,
       step: 1,
       slide: function(event, ui) {
+        // update global definiton of current year
+        currentYear = ui.value;
+
+        // complete step
         sliderStep(ui.value);
       }
     });
@@ -146,8 +134,6 @@ window.onload = function() {
           }
           else if (locStartYear < year && locEndYear >= year) {
             // console.log(year + " - > stays in " + locName);
-            // console.log(locations[locName].lat);
-            // console.log(locations[locName].lng);
             circles.push(locName);
             break;
           }
@@ -176,7 +162,7 @@ window.onload = function() {
       // loop through circles and draw them
       for (var key in countCircles) {
         if (countCircles.hasOwnProperty(key)) {
-          console.log(key + " -> " + countCircles[key]);
+          // console.log(key + " -> " + countCircles[key]);
 
           L.circle([locations[key].lat, locations[key].lng], {
               color: mainColor,
@@ -214,7 +200,7 @@ window.onload = function() {
 
     // playback
     var refreshIntervalId,
-        playerSpeed = 500;
+        playerSpeed = 1500;
 
     $('#play').click(function(event) {
 
