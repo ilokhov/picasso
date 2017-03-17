@@ -212,7 +212,7 @@ window.onload = function() {
                       [curve[2], curve[3]]], {
                         dashArray: 10,
                         color: "transparent",
-                        weight: 5,
+                        weight: 15,
                       }).bindPopup(popUpContent).addTo(shapes);
       });
 
