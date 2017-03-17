@@ -1,30 +1,422 @@
-{
-  "obj1": {
-    "location1": {
-      "start": 1904,
-      "type": "create"
-    },
-    "location2": {
-      "start": 1908,
-      "type": "purchase"
-    },
-    "location3": {
-      "start": 1920,
-      "type": "gift"
-    }
+[
+  {
+    "id":"78427",
+    "title":"Pierrot",
+    "locations":[
+      {
+        "name":"Paris",
+        "start":1918,
+        "end":1922,
+        "type":"create"
+      },
+      {
+        "name":"New York",
+        "start":1923,
+        "end":1950,
+        "type":"acquired"
+      },
+      {
+        "name":"New York",
+        "start":1951,
+        "end":1951,
+        "type":"purchase"
+      },
+      {
+        "name":"New York",
+        "start":1952,
+        "end":2017,
+        "type":"acquired"
+      }
+    ]
   },
-  "obj2": {
-    "location1": {
-      "start": 1904,
-      "type": "create"
-    },
-    "location2": {
-      "start": 1908,
-      "type": "purchase"
-    },
-    "location3": {
-      "start": 1920,
-      "type": "purchase"
-    }
+  {
+    "id":"78578",
+    "title":"Violin and Grapes",
+    "locations":[
+      {
+        "name":"Céret",
+        "start":1912,
+        "end":1912,
+        "type":"create"
+      },
+      {
+        "name":"Düsseldorf",
+        "start":1913,
+        "end":1916,
+        "type":"purchase"
+      },
+      {
+        "name":"Copenhagen",
+        "start":1917,
+        "end":1924,
+        "type":"purchase"
+      },
+      {
+        "name":"Copenhagen",
+        "start":1925,
+        "end":1957,
+        "type":"purchase"
+      },
+      {
+        "name":"New York",
+        "start":1958,
+        "end":1959,
+        "type":"purchase"
+      },
+      {
+        "name":"New York",
+        "start":1960,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
+  },
+  {
+    "id":"79051",
+    "title":"Ma Jolie",
+    "locations":[
+      {
+        "name":"Paris",
+        "start":1912,
+        "end":1913,
+        "type":"create"
+      },
+      {
+        "name":"Paris",
+        "start":1914,
+        "end":1922,
+        "type":"acquired"
+      },
+      {
+        "name":"Zürich",
+        "start":1923,
+        "end":1928,
+        "type":"purchase"
+      },
+      {
+        "name":"New York",
+        "start":1929,
+        "end":2017,
+        "type":"acquired"
+      }
+    ]
+  },
+  {
+    "id":"79766",
+    "title":"text",
+    "locations":[
+      {
+        "name":"Paris",
+        "start":1907,
+        "end":1923,
+        "type":"create"
+      },
+      {
+        "name":"Neuilly",
+        "start":1924,
+        "end":1936,
+        "type":"purchase"
+      },
+      {
+        "name":"New York",
+        "start":1937,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
+  },
+  {
+    "id":"78311",
+    "title":"text",
+    "locations":[
+      {
+        "name":"Boisgeloup",
+        "start":1932,
+        "end":1932,
+        "type":"create"
+      },
+      {
+        "name":"Paris",
+        "start":1933,
+        "end":1936,
+        "type":"purchase"
+      },
+      {
+        "name":"New York",
+        "start":1937,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
+  },
+  {
+    "id":"78986",
+    "title":"text",
+    "locations":[
+      {
+        "name":"Horta de Sant Joan",
+        "start":1909,
+        "end":1919,
+        "type":"create"
+      },
+      {
+        "name":"New York",
+        "start":1920,
+        "end":1933,
+        "type":"purchase"
+      },
+      {
+        "name":"Paris",
+        "start":1934,
+        "end":1937,
+        "type":"purchase"
+      },
+      {
+        "name":"New York",
+        "start":1938,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
+  },
+  {
+    "id":"80360",
+    "title":"text",
+    "locations":[
+      {
+        "name":"Royan",
+        "start":1940,
+        "end":1940,
+        "type":"create"
+      },
+      {
+        "name":"Paris",
+        "start":1941,
+        "end":1956,
+        "type":"purchase"
+      },
+      {
+        "name":"New York",
+        "start":1957,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
+  },
+  {
+    "id":"78433",
+    "title":"text",
+    "locations":[
+      {
+        "name":"Antibes",
+        "start":1939,
+        "end":1944,
+        "type":"create"
+      },
+      {
+        "name":"Paris",
+        "start":1945,
+        "end":1945,
+        "type":"acquired"
+      },
+      {
+        "name":"London",
+        "start":1945,
+        "end":1947,
+        "type":"lend"
+      },
+      {
+        "name":"Venice",
+        "start":1948,
+        "end":1948,
+        "type":"lend"
+      },
+      {
+        "name":"New York",
+        "start":1949,
+        "end":1951,
+        "type":"purchase"
+      },
+      {
+        "name":"New York",
+        "start":1952,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
+  },
+  {
+    "id":"33008",
+    "title":"text",
+    "locations":[
+      {
+        "name":"Paris",
+        "start":1904,
+        "end":1927,
+        "type":"create"
+      },
+      {
+        "name":"London",
+        "start":1928,
+        "end":1955,
+        "type":"purchase"
+      },
+      {
+        "name":"New York",
+        "start":1956,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
+  },
+  {
+    "id":"80026",
+    "title":"text",
+    "locations":[
+      {
+        "name":"Paris",
+        "start":1901,
+        "end":1909,
+        "type":"create"
+      },
+      {
+        "name":"Nice",
+        "start":1910,
+        "end":1926,
+        "type":"purchase"
+      },
+      {
+        "name":"Paris",
+        "start":1927,
+        "end":1948,
+        "type":"purchase"
+      },
+      {
+        "name":"New York",
+        "start":1949,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
+  },
+  {
+    "id":"80432",
+    "title":"text",
+    "locations":[
+      {
+        "name":"Paris",
+        "start":1935,
+        "end":1949,
+        "type":"create"
+      },
+      {
+        "name":"New York",
+        "start":1950,
+        "end":2017,
+        "type":"acquired"
+      }
+    ]
+  },
+  {
+    "id":"78718",
+    "title":"text",
+    "locations":[
+      {
+        "name":"Horta de Sant Joan",
+        "start":1909,
+        "end":1909,
+        "type":"create"
+      },
+      {
+        "name":"Paris",
+        "start":1910,
+        "end":1967,
+        "type":"acquired"
+      },
+      {
+        "name":"New York",
+        "start":1968,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
+  },
+  {
+    "id":"80393",
+    "title":"text",
+    "locations":[
+      {
+        "name":"Paris",
+        "start":1906,
+        "end":1914,
+        "type":"create"
+      },
+      {
+        "name":"New York",
+        "start":1915,
+        "end":1932,
+        "type":"purchase"
+      },
+      {
+        "name":"Chicago",
+        "start":1933,
+        "end":1995,
+        "type":"purchase"
+      },
+      {
+        "name":"New York",
+        "start":1996,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
+  },
+  {
+    "id":"79994",
+    "title":"text",
+    "locations":[
+      {
+        "name":"Paris",
+        "start":1905,
+        "end":1926,
+        "type":"create"
+      },
+      {
+        "name":"Berlin",
+        "start":1927,
+        "end":1935,
+        "type":"purchase"
+      },
+      {
+        "name":"New York",
+        "start":1936,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
+  },
+  {
+    "id":"79996",
+    "title":"text",
+    "locations":[
+      {
+        "name":"Paris",
+        "start":1908,
+        "end":1964,
+        "type":"create"
+      },
+      {
+        "name":"Basel",
+        "start":1965,
+        "end":1969,
+        "type":"purchase"
+      },
+      {
+        "name":"New York",
+        "start":1970,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
   }
-}
+]

@@ -24,7 +24,11 @@ body {
   color: #2a2a2a;
 }
 
-/* full screen */
+.noPointerEvents {
+  pointer-events: none !important;
+}
+
+/* set map to full screen */
 html,
 body,
 .wrap,
@@ -33,16 +37,9 @@ body,
   height: 100%;
 }
 
-#map {
-  /* height: 600px; */
-}
-
-
-
 #leaflet-slider {
   margin-bottom: 50px;
 }
-
 
 #controls {
   position: absolute;
@@ -51,7 +48,7 @@ body,
   z-index: 10000;
   width: 410px;
   height: 52px;
-  background: #222;
+  background: rgba(0,0,0, 0.8);
 }
 #play {
   position: absolute;
@@ -72,12 +69,15 @@ body,
   width: 200px;
   height: 8px;
   border-radius: 4px;
+  border: none;
 }
 #slider .ui-slider-handle {
   border-radius: 50%;
-  width: 16px;
-  height: 16px;
+  width: 17px;
+  height: 17px;
   outline: none;
+  border: none;
+  background: #d62839;
 }
 #year {
   position: absolute;
@@ -87,3 +87,32 @@ body,
   color: #fff;
 }
 
+.pulse {
+  animation: pulseAnimate 1.5s ease forwards;
+  pointer-events: none !important;
+}
+@keyframes pulseAnimate {
+  0% { opacity: 1; stroke-opacity: 1; }
+  100% { opacity: 0; stroke-opacity: 0; }
+}
+
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: rgba(0,0,0, 0.8);
+  color: #fff;
+  box-shadow: none;
+  border-radius: 0;
+  font-size: 14px;
+}
+.leaflet-popup-tip-container {
+  display: none;
+}
+.leaflet-popup-content {
+  margin: 12px 24px;
+}
+.leaflet-container a.leaflet-popup-close-button {
+  top: 6px;
+  right: 6px;
+  color: #fff;
+}

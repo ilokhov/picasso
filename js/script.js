@@ -7,11 +7,12 @@ window.onload = function() {
 
 
 
+  // load JSON
   var objects,
       locations;
 
   $.when(
-      $.getJSON("objects-array.json", function(data) {
+      $.getJSON("objects.json", function(data) {
           objects = data;
       }),
       $.getJSON("locations.json", function(data) {
@@ -24,10 +25,8 @@ window.onload = function() {
 
 
 
-
-
   function main() {
-    // define main layer
+    // define layer where shapes will be drawn
     var shapes = new L.LayerGroup();
 
     // define circle defaults
@@ -36,7 +35,7 @@ window.onload = function() {
         baseCircleRadius = 100000,
         lineWeight = 1;
 
-    var mainColor = 'red';
+    var mainColor = '#d62839';
 
 
 
@@ -46,12 +45,15 @@ window.onload = function() {
         '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
         'Imagery © <a href="http://mapbox.com">Mapbox</a>';
 
-    var grayscale = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr});
+    // var lightMapStyle = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr});
+    var lightMapStyle = L.tileLayer('https://api.mapbox.com/styles/v1/ilokhov/cj0d2qc8400cm2sqho22nskuw/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiaWxva2hvdiIsImEiOiJjajBhN2VyaTkwMDNxMndsazNhbnZxN2pjIn0.0WeQwRSqxMqNjIUSSFOy5Q', {attribution: mbAttr});
+    
+
 
     var map = L.map('map', {
       center: [30.505, -20.09],
       zoom: 3,
-      layers: [grayscale, shapes],
+      layers: [lightMapStyle, shapes],
     });
 
 
@@ -89,13 +91,10 @@ window.onload = function() {
       // set year text
       $year.html(year);
 
-
-
-
       // collect all shapes to be drawn in array
       var circles = [],
-          curves = [];
-
+          curves = [],
+          pulses = [];
 
 
 
@@ -104,6 +103,7 @@ window.onload = function() {
         
         // init previous location
         var locPrevious = null;
+        var locTitle = el.title;
 
         // START looping through locations of each object
         for (var i = 0; i < el.locations.length; i++) {
@@ -116,19 +116,32 @@ window.onload = function() {
             // console.log(year + " - > does not exist yet");
             break;
           }
+          else if (locStartYear === year && !locPrevious) {
+            // console.log(year + " - > first appearence in: " + locName);
+            circles.push(locName);
+            pulses.push(locName);
+            break;
+          }
           else if (locStartYear === year) {
             // console.log(year + " - > transfer to: " + locName);
+            // console.log("previous location was: " + locPrevious);
             circles.push(locName);
 
-            // check if previous location exists, add circle and curve if this is the case
-            if (locPrevious) {
-              // console.log("previous location was: " + locPrevious);
+            // only add circle and curve if it changes location
+            if (locName !== locPrevious) {
               circles.push(locPrevious);
               curves.push([
                             locations[locPrevious].lat,
                             locations[locPrevious].lng,
                             locations[locName].lat,
-                            locations[locName].lng]);
+                            locations[locName].lng,
+                            locPrevious,
+                            locName,
+                            locTitle,
+                          ]);
+            }
+            else {
+              // console.log("transfer within the same location");
             }
             break;
           }
@@ -185,7 +198,32 @@ window.onload = function() {
                         animate: {duration: 5000, iterations: Infinity},
                         color: mainColor,
                         weight: lineWeight,
+                        className: 'noPointerEvents',
                       }).addTo(shapes);
+
+        var popUpContent = "Title <br>" + curve[6] + "<br><br> Transaction from " + curve[4] + " to " + curve[5];
+
+        // invisible curve for the popup
+        L.curve([
+                  'M',[curve[0], curve[1]],
+                  'Q',[curve[0] + 20, (curve[1] + curve[3]) / 2],
+                      [curve[2], curve[3]]], {
+                        dashArray: 10,
+                        color: "transparent",
+                        weight: 5,
+                      }).bindPopup(popUpContent).addTo(shapes);
+      });
+
+      // loop through pulses and draw them
+      pulses.forEach(function(pulse) {
+        L.circle([locations[pulse].lat, locations[pulse].lng], {
+              color: "#ff6666",
+              fillColor: "transparent",
+              fillOpacity: circleFillOpacity,
+              radius: baseCircleRadius * 2,
+              weight: circleWeight,
+              className: 'pulse'
+          }).addTo(shapes);
       });
 
     // END slider step
@@ -200,9 +238,9 @@ window.onload = function() {
 
     // playback
     var refreshIntervalId,
-        playerSpeed = 1500;
+        playerSpeed = 750;
 
-    $('#play').click(function(event) {
+    $('#play').click(function() {
 
       // if not playing
       if (!$(this).hasClass('active')) {
@@ -238,5 +276,3 @@ window.onload = function() {
 
 
 };
-
-
