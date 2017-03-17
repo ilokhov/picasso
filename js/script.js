@@ -51,7 +51,7 @@ window.onload = function() {
 
 
     var map = L.map('map', {
-      center: [30.505, -20.09],
+      center: [45.505, -30.09],
       zoom: 3,
       layers: [lightMapStyle, shapes],
     });
@@ -111,6 +111,7 @@ window.onload = function() {
           locName = el.locations[i].name;
           locStartYear = el.locations[i].start;
           locEndYear = el.locations[i].end;
+          locTransType = el.locations[i].type;
 
           if (locStartYear > year) {
             // console.log(year + " - > does not exist yet");
@@ -138,6 +139,7 @@ window.onload = function() {
                             locPrevious,
                             locName,
                             locTitle,
+                            locTransType,
                           ]);
             }
             else {
@@ -201,7 +203,7 @@ window.onload = function() {
                         className: 'noPointerEvents',
                       }).addTo(shapes);
 
-        var popUpContent = "Title <br>" + curve[6] + "<br><br> Transaction from " + curve[4] + " to " + curve[5];
+        var popUpContent = '<span class="artwork-title">&ldquo;' + curve[6] + '&rdquo;</span><br><br> From ' + curve[4] + ' to ' + curve[5] + '<br>Transaction type: ' + curve[7];
 
         // invisible curve for the popup
         L.curve([

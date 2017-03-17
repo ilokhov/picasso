@@ -103,7 +103,7 @@
   },
   {
     "id":"79766",
-    "title":"text",
+    "title":"Les Demoiselles d'Avignon",
     "locations":[
       {
         "name":"Paris",
@@ -127,7 +127,7 @@
   },
   {
     "id":"78311",
-    "title":"text",
+    "title":"Girl before a Mirror",
     "locations":[
       {
         "name":"Boisgeloup",
@@ -151,7 +151,7 @@
   },
   {
     "id":"78986",
-    "title":"text",
+    "title":"Still Life with Liqueur Bottle",
     "locations":[
       {
         "name":"Horta de Sant Joan",
@@ -181,7 +181,7 @@
   },
   {
     "id":"80360",
-    "title":"text",
+    "title":"Woman Dressing Her Hair",
     "locations":[
       {
         "name":"Royan",
@@ -205,7 +205,7 @@
   },
   {
     "id":"78433",
-    "title":"text",
+    "title":"Night Fishing at Antibes",
     "locations":[
       {
         "name":"Antibes",
@@ -247,7 +247,7 @@
   },
   {
     "id":"33008",
-    "title":"text",
+    "title":"Brooding Woman (recto), Three Children (verso)",
     "locations":[
       {
         "name":"Paris",
@@ -271,7 +271,7 @@
   },
   {
     "id":"80026",
-    "title":"text",
+    "title":"Self Portrait (Yo)",
     "locations":[
       {
         "name":"Paris",
@@ -301,7 +301,7 @@
   },
   {
     "id":"80432",
-    "title":"text",
+    "title":"Interior with a Girl Drawing",
     "locations":[
       {
         "name":"Paris",
@@ -319,7 +319,7 @@
   },
   {
     "id":"78718",
-    "title":"text",
+    "title":"The Reservoir, Horta de Ebro",
     "locations":[
       {
         "name":"Horta de Sant Joan",
@@ -343,7 +343,7 @@
   },
   {
     "id":"80393",
-    "title":"text",
+    "title":"Woman Plaiting Her Hair",
     "locations":[
       {
         "name":"Paris",
@@ -373,7 +373,7 @@
   },
   {
     "id":"79994",
-    "title":"text",
+    "title":"Boy Leading a Horse",
     "locations":[
       {
         "name":"Paris",
@@ -397,7 +397,7 @@
   },
   {
     "id":"79996",
-    "title":"text",
+    "title":"Repose",
     "locations":[
       {
         "name":"Paris",
@@ -414,6 +414,168 @@
       {
         "name":"New York",
         "start":1970,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
+  },
+  {
+    "id":"T00729",
+    "title":"The Three Dancers",
+    "locations":[
+      {
+        "name":"Juan-Les-Pins",
+        "start":1925,
+        "end":1964,
+        "type":"create"
+      },
+      {
+        "name":"London",
+        "start":1965,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
+  },
+  {
+    "id":"T05010",
+    "title":"Weeping Woman",
+    "locations":[
+      {
+        "name":"Paris",
+        "start":1937,
+        "end":1937,
+        "type":"create"
+      },
+      {
+        "name":"London",
+        "start":1938,
+        "end":1963,
+        "type":"purchase"
+      },
+      {
+        "name":"London",
+        "start":1964,
+        "end":1986,
+        "type":"purchase"
+      },
+      {
+        "name":"London",
+        "start":1987,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
+  },
+  {
+    "id":"N04719",
+    "title":"Seated Woman in a Chemise",
+    "locations":[
+      {
+        "name":"Fointainebleu",
+        "start":1923,
+        "end":1928,
+        "type":"create"
+      },
+      {
+        "name":"Paris",
+        "start":1929,
+        "end":1929,
+        "type":"purchase"
+      },
+      {
+        "name":"Berlin",
+        "start":1929,
+        "end":1929,
+        "type":"purchase"
+      },
+      {
+        "name":"London",
+        "start":1930,
+        "end":193,
+        "type":"purchase"
+      },
+      {
+        "name":"London",
+        "start":1934,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
+  },
+  {
+    "id":"T00145",
+    "title":"Goat Skull, Bottle and Candle",
+    "locations":[
+      {
+        "name":"Vallauris",
+        "start":1951,
+        "end":1952,
+        "type":"create"
+      },
+      {
+        "name":"Paris",
+        "start":1953,
+        "end":1956,
+        "type":"purchase"
+      },
+      {
+        "name":"London",
+        "start":1957,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
+  },
+  {
+    "id":"N04721",
+    "title":"Horse with a Youth in Blue",
+    "locations":[
+      {
+        "name":"Paris",
+        "start":1906,
+        "end":1906,
+        "type":"create"
+      },
+      {
+        "name":"London",
+        "start":1907,
+        "end":1911,
+        "type":"purchase"
+      },
+      {
+        "name":"London",
+        "start":1912,
+        "end":1932,
+        "type":"purchase"
+      },
+      {
+        "name":"London",
+        "start":1933,
+        "end":2017,
+        "type":"purchase"
+      }
+    ]
+  },
+  {
+    "id":"T03670",
+    "title":"Nude Woman with Necklace",
+    "locations":[
+      {
+        "name":"Mougins",
+        "start":1968,
+        "end":1968,
+        "type":"create"
+      },
+      {
+        "name":"Paris",
+        "start":1069,
+        "end":1982,
+        "type":"purchase"
+      },
+      {
+        "name":"London",
+        "start":1983,
         "end":2017,
         "type":"purchase"
       }

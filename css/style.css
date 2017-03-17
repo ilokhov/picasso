@@ -96,23 +96,26 @@ body,
   100% { opacity: 0; stroke-opacity: 0; }
 }
 
-
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
   background: rgba(0,0,0, 0.8);
   color: #fff;
   box-shadow: none;
   border-radius: 0;
-  font-size: 14px;
+  font-size: 15px;
 }
 .leaflet-popup-tip-container {
   display: none;
 }
 .leaflet-popup-content {
-  margin: 12px 24px;
+  margin: 12px 34px 12px 24px;
 }
 .leaflet-container a.leaflet-popup-close-button {
   top: 6px;
   right: 6px;
   color: #fff;
+}
+
+.artwork-title {
+  font-size: 20px;
 }

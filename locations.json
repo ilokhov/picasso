@@ -66,5 +66,21 @@
   "Basel":{
     "lat":47.55814,
     "lng":7.58769
+  },
+  "Juan-Les-Pins":{
+    "lat":43.56945,
+    "lng":7.11309
+  },
+  "Fointainebleu":{
+    "lat":48.4,
+    "lng":2.7
+  },
+  "Vallauris":{
+    "lat":43.57803,
+    "lng":7.05451
+  },
+  "Mougins":{
+    "lat":43.59873,
+    "lng":7.00434
   }
 }
