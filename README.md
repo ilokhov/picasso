@@ -7,9 +7,14 @@
 
 ## Background
 
-This project was originally developed as part of the Coding Dürer Hackathon in Munich in 2017. The central problem tackled here is geographical and temporal mapping of artwork provenance.
+This project was originally developed as part of the Coding Dürer hackathon in Munich in 2017. The hackathon brought together art historians and information scientists to work on various problems in digital art history. The central problem tackled in this project is geographical and temporal mapping of artwork provenance.
 
-The resulting data visualisation shows the locations of artworks over time. Showing where artworks were located at different times and mapping their movements allows to look for and analyse provenance patterns.
+The resulting data visualisation shows the locations of artworks over time. Showing where artworks were located at different times and mapping their movements allows to look for and analyse provenance patterns. Some of the questions that the visualisation aims to answer are:
+
+- when were an artist's works acquired by the various institutions?
+- are there peaks or patterns that can be identified?
+- which works sparked interest at which times?
+- through which routes did the works spread from their place of creation until their current collection?
 
 
 ## Data
