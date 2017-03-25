@@ -70,8 +70,17 @@ body,
   height: 8px;
   border-radius: 4px;
   border: none;
+  background: #fff;
+  color: #333;
 }
 #slider .ui-slider-handle {
+  position: absolute;
+  z-index: 2;
+  cursor: default;
+  -ms-touch-action: none;
+  touch-action: none;
+  top: -5px;
+  margin-left: -9px;
   border-radius: 50%;
   width: 17px;
   height: 17px;

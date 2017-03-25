@@ -35,11 +35,11 @@ Object and location data is stored in JSON files. The script for showing and gro
 
 ## Future development ideas
 
-- use a lighter alternative instead of the jQuery UI slider
 - improve overall codebase, include a way to hold references to individual objects
 - increase the amount of information displayed in the popup
 - add a filter function (for example filter by different institutions)
 - include more precise locations (addresses of museums instead of cities)
 - include colour coding (for example for different types of transactions)
 - improve animations
+- improve map styling
 - check browser compatibility

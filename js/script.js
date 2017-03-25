@@ -12,10 +12,10 @@ window.onload = function() {
       locations;
 
   $.when(
-      $.getJSON("objects.json", function(data) {
+      $.getJSON('objects.json', function(data) {
           objects = data;
       }),
-      $.getJSON("locations.json", function(data) {
+      $.getJSON('locations.json', function(data) {
           locations = data;
       })
   ).then(function() {
@@ -45,7 +45,6 @@ window.onload = function() {
         '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
         'Imagery © <a href="http://mapbox.com">Mapbox</a>';
 
-    // var lightMapStyle = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr});
     var lightMapStyle = L.tileLayer('https://api.mapbox.com/styles/v1/ilokhov/cj0d2qc8400cm2sqho22nskuw/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiaWxva2hvdiIsImEiOiJjajBhN2VyaTkwMDNxMndsazNhbnZxN2pjIn0.0WeQwRSqxMqNjIUSSFOy5Q', {attribution: mbAttr});
     
 
@@ -114,18 +113,18 @@ window.onload = function() {
           locTransType = el.locations[i].type;
 
           if (locStartYear > year) {
-            // console.log(year + " - > does not exist yet");
+            // console.log(year + ' - > does not exist yet');
             break;
           }
           else if (locStartYear === year && !locPrevious) {
-            // console.log(year + " - > first appearence in: " + locName);
+            // console.log(year + ' - > first appearence in: '' + locName);
             circles.push(locName);
             pulses.push(locName);
             break;
           }
           else if (locStartYear === year) {
-            // console.log(year + " - > transfer to: " + locName);
-            // console.log("previous location was: " + locPrevious);
+            // console.log(year + ' - > transfer to: ' + locName);
+            // console.log('previous location was: ' + locPrevious);
             circles.push(locName);
 
             // only add circle and curve if it changes location
@@ -143,12 +142,12 @@ window.onload = function() {
                           ]);
             }
             else {
-              // console.log("transfer within the same location");
+              // console.log('transfer within the same location');
             }
             break;
           }
           else if (locStartYear < year && locEndYear >= year) {
-            // console.log(year + " - > stays in " + locName);
+            // console.log(year + ' - > stays in ' + locName);
             circles.push(locName);
             break;
           }
@@ -177,8 +176,6 @@ window.onload = function() {
       // loop through circles and draw them
       for (var key in countCircles) {
         if (countCircles.hasOwnProperty(key)) {
-          // console.log(key + " -> " + countCircles[key]);
-
           L.circle([locations[key].lat, locations[key].lng], {
               color: mainColor,
               fillColor: mainColor,
@@ -211,7 +208,7 @@ window.onload = function() {
                   'Q',[curve[0] + 20, (curve[1] + curve[3]) / 2],
                       [curve[2], curve[3]]], {
                         dashArray: 10,
-                        color: "transparent",
+                        color: 'transparent',
                         weight: 15,
                       }).bindPopup(popUpContent).addTo(shapes);
       });
@@ -219,8 +216,8 @@ window.onload = function() {
       // loop through pulses and draw them
       pulses.forEach(function(pulse) {
         L.circle([locations[pulse].lat, locations[pulse].lng], {
-              color: "#ff6666",
-              fillColor: "transparent",
+              color: '#ff6666',
+              fillColor: 'transparent',
               fillOpacity: circleFillOpacity,
               radius: baseCircleRadius * 2,
               weight: circleWeight,
